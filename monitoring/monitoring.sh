@@ -3,9 +3,9 @@
 # /usr/local/bin/monitoring.sh:
 
 ARCH="$(uname -a)"
-PHYS_CPU="$(lscpu | awk -F: '/Socket\\(s\\)/{print $2}' | xargs || echo unknown)"
-VCPU="$(nproc || echo unknown)"
-MEM_TOTAL_KB=$(awk '/MemTotal/ {print $2}' /proc/meminfo || echo 0)
+PHYS_CPU="$(grep "physical id" /proc/cpuinfo | sort -u | wc -l)"
+VCPU="$(grep "processor id" /proc/cpuinfo | wc -l)"
+MEM_TOTAL_KB="$(free -m | grep "Mem:" | awk '{printf("%d/%dMB (%2.f%%)", $3, $2, $3/$2*100)}')"
 MEM_AVAIL_KB=$(awk '/MemAvailable/ {print $2}' /proc/meminfo || echo 0)
 MEM_USED_KB=$(( MEM_TOTAL_KB - MEM_AVAIL_KB ))
 MEM_PCT=$(awk "BEGIN{ if($MEM_TOTAL_KB>0) printf \"%.2f\", ($MEM_USED_KB/$MEM_TOTAL_KB)*100; else print \"0.00\" }")
