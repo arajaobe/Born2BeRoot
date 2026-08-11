@@ -1,0 +1,7 @@
+
+# Add to root crontab so it runs at boot and every 10 minutes:
+
+sudo crontab -e
+# add these two lines
+@reboot /usr/local/bin/monitoring.sh
+*/10 * * * * /usr/local/bin/monitoring.sh

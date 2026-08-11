@@ -1,0 +1,10 @@
+systemd service and timer (recommended for modern systems)
+
+    Create /etc/systemd/system/monitoring.service:
+
+[Unit]
+Description=Periodic system monitoring broadcast
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/monitoring.sh

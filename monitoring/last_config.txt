@@ -1,0 +1,25 @@
+# Run manually to see immediate output:
+
+bash
+
+sudo /usr/local/bin/monitoring.sh
+
+# Check cron logs if using cron:
+
+bash
+
+sudo grep monitoring.sh /var/log/syslog
+
+# Check systemd logs if using timer:
+
+bash
+
+sudo journalctl -u monitoring.service -n 200 --no-pager
+
+# Common issues
+
+   # wall not delivering messages: ensure wall is installed and users are logged in on TTYs.
+
+    # journalctl sudo count zero: some systems log sudo differently; adjust SUDO_COUNT extraction if needed.
+
+    #    Commands missing: install procps, iproute2, util-linux, lsb-release as needed.

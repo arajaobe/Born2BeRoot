@@ -1,0 +1,5 @@
+sudo tee /usr/local/bin/monitoring.sh > /dev/null <<'EOF'
+# paste the script content here
+EOF
+sudo chmod 755 /usr/local/bin/monitoring.sh
+sudo chown root:root /usr/local/bin/monitoring.sh
