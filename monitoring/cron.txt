@@ -1,0 +1,4 @@
+sudo crontab -e
+
+
+*/10 * * * * /usr/local/bin/monitoring.sh | wall
