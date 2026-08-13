@@ -1,4 +1,5 @@
 sudo crontab -e
 
+@reboot sleep 10 && /usr/local/bin/monitoring.sh 2>/dev/null | wall
+*/10 * * * * /usr/local/bin/monitoring.sh 2>/dev/null | wall
 
-*/10 * * * * /usr/local/bin/monitoring.sh | wall
